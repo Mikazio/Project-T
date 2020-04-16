@@ -25,7 +25,7 @@ services:
         container_name: 'backend-container'
     cronjob:
         build: '.'
-        image: mikaz9652/tumboon-cronjob:release1.0
+        image: mikaz9652/tumboon-cronjob:release
         container_name: 'cronjob-container'
         networks:
             main_network:
