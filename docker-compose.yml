@@ -3,7 +3,7 @@ version: '3'
 services: 
     frontend:
         build: '.'
-        image: mikaz9652/tumboon-frontend:release1.0
+        image: mikaz9652/tumboon-frontend:release1.1
         ports: 
             - "80:80"
         container_name: 'frontend-container'
@@ -12,7 +12,7 @@ services:
                 ipv4_address: "172.20.1.101"
     backend:
         build: '.'
-        image: mikaz9652/tumboon-backend:release1.0
+        image: mikaz9652/tumboon-backend:release1.1
         expose: 
             - "3000"
         ports: 
