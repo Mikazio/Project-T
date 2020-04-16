@@ -1,0 +1,42 @@
+version: '3'
+
+services: 
+    frontend:
+        build: '.'
+        image: mikaz9652/tumboon-frontend:release
+        ports: 
+            - "80:80"
+        container_name: 'frontend-container'
+        networks:
+            main_network:
+                ipv4_address: "172.20.1.101"
+    backend:
+        build: '.'
+        image: mikaz9652/tumboon-backend:release
+        expose: 
+            - "3000"
+        ports: 
+            - "3000:3000"
+        networks:
+            main_network: 
+                ipv4_address: "172.20.1.102"
+        volumes:
+            - data-storages:/usr/src/app/dist/uploads
+        container_name: 'backend-container'
+    cronjob:
+        build: '.'
+        image: mikaz9652/tumboon-cronjob:release
+        container_name: 'cronjob-container'
+        networks:
+            main_network:
+                ipv4_address: "172.20.1.103"
+
+
+networks:
+    main_network:
+        ipam:
+            config:
+                - subnet: 172.20.1.0/24
+
+volumes:
+    data-storages:
